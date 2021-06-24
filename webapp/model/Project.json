@@ -1,0 +1,24 @@
+{
+	"project": [{
+		"id": "5",
+		"name": "APAC1",
+		"default": "X",
+		"integration": "X"
+	}, {
+		"id": "2",
+		"name": "APAC2",
+		"default": "",
+		"integration": ""
+
+	}, {
+		"id": "3",
+		"name": "ASHLAND",
+		"default": "X",
+		"integration": ""
+	}, {
+		"id": "4",
+		"name": "Bubba",
+		"default": "",
+		"integration": "X"
+	}]
+}

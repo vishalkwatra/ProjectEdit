@@ -1,0 +1,81 @@
+<mvc:View controllerName="newellco.fiori.projectedit.controller.Master" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:smartTable="sap.ui.comp.smarttable">
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title id="masterPageTitle" text="Project Data Management" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+			<!--<List id="list" width="auto" class="sapFDynamicPageAlignContent"-->
+			<!--	items="{ path: '/OrderHeaderSet', sorter: { path: 'Salesdocument', descending: false }, groupHeaderFactory: '.createGroupHeader' }"-->
+			<!--	busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"-->
+			<!--	mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"-->
+			<!--	updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">-->
+			<!--	<headerToolbar>-->
+			<!--		<OverflowToolbar>-->
+			<!--			<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search=".onSearch" width="auto">-->
+			<!--				<layoutData>-->
+			<!--					<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>-->
+			<!--				</layoutData>-->
+			<!--			</SearchField>-->
+			<!--			<ToolbarSpacer/>-->
+			<!--			<Button id="sortButton" press=".onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>-->
+			<!--		</OverflowToolbar>-->
+			<!--	</headerToolbar>-->
+			<!--	<items>-->
+			<!--		<ObjectListItem type="Navigation" press=".onSelectionChange" title="{Salesdocument}"></ObjectListItem>-->
+			<!--	</items>-->
+			<!--</List>-->
+			<smartTable:SmartTable id="idProjTable" entitySet="{project}" tableBindingPath="{project>/project}" tableType="ResponsiveTable"
+				useExportToExcel="false" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" header="Projects"
+				showRowCount="true" persistencyKey="newellco.fiori.projectedit.ProjectList" customData:useSmartField="true" enableAutoBinding="true"
+				demandPopin="true" requestAtLeastFields="id" class="sapUiResponsiveContentPadding">
+				<Table id="idProjInnerTable" items="{project>/project}">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="Projects" level="H2"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<!--<Column id="idIdCol">-->
+						<!--	<customData>-->
+						<!--		<core:CustomData id="idColumn" key="p13nData"-->
+						<!--			value='\{"columnKey": "id", "sortProperty": "id", "filterProperty": "id", "leadingProperty": "id"}'/>-->
+						<!--	</customData>-->
+						<!--	<Text text="Id"></Text>-->
+						<!--</Column>-->
+						<Column id="idNameCol">
+							<customData>
+								<core:CustomData id="idNameColumn" key="p13nData" value='\{"columnKey": "name", "leadingProperty": "name"}'/>
+							</customData>
+							<Text text="Name"></Text>
+						</Column>
+						<Column id="idDefaultCol">
+							<customData>
+								<core:CustomData id="idDefaultColumn" key="p13nData" value='\{"columnKey": "default", "leadingProperty": "default"}'/>
+							</customData>
+							<Text text="Default"></Text>
+						</Column>
+						<Column id="idIntegrationCol">
+							<customData>
+								<core:CustomData id="idIntegrationColumn" key="p13nData" value='\{"columnKey": "integration", "leadingProperty": "integration"}'/>
+							</customData>
+							<Text text="Integration"></Text>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem type="Navigation" press="onPressProjectNavigation">
+							<cells>
+								<Text text="{project>name}"/>
+								<Text text="{= ${project>default} === 'X' ? 'Yes' : 'No'}"></Text>
+								<Text text="{= ${project>integration} === 'X' ? 'Yes' : 'No'}"></Text>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</smartTable:SmartTable>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

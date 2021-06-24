@@ -1,0 +1,98 @@
+<mvc:View controllerName="newellco.fiori.projectedit.controller.Detail" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.f.semantic"
+	xmlns:mvc="sap.ui.core.mvc">
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="{project>id}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectAttribute title="{project>name}"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<VBox>
+				<core:Fragment fragmentName="newellco.fiori.projectedit.fragment.Project" type="XML"></core:Fragment>
+				<IconTabBar id="idIconTabBar">
+					<items>
+						<IconTabFilter text="Stakeholders" key="stakeholders" count="112">
+							<Table id="idStakholdProjTable" items="{Stakehold>/EmpProjStakhold}">
+								<headerToolbar>
+									<OverflowToolbar>
+										<Title text="Stakeholder" level="H2"/>
+										<ToolbarSpacer></ToolbarSpacer>
+										<Button icon="sap-icon://download" press="onDataExport"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column id="idName">
+										<Text text="Name"></Text>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Stakehold>name}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</IconTabFilter>
+						<IconTabFilter text="Employees" key="employees" count="93">
+							<Table id="idEmpProjTable" items="{EmpProj>/EmpProj}" mode="MultiSelect">
+								<headerToolbar>
+									<OverflowToolbar>
+										<Title text="Employee" level="H2"/>
+										<ToolbarSpacer></ToolbarSpacer>
+										<Button icon="sap-icon://negative" text="Remove/Unmap" press="onPressRemoveEmp"/>
+										<Button icon="sap-icon://download" press="onDataExport"/>
+									</OverflowToolbar>
+								</headerToolbar>
+								<columns>
+									<Column id="idLogin">
+										<Text text="Login"></Text>
+									</Column>
+									<Column id="idFirstName">
+										<Text text="First Name"></Text>
+									</Column>
+									<Column id="idLastName">
+										<Text text="Last Name"></Text>
+									</Column>
+									<Column id="idStatus">
+										<Text text="Status"></Text>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{EmpProj>name}"/>
+											<Text text="{EmpProj>name}"/>
+											<Text text="{EmpProj>name}"/>
+											<Text text="{EmpProj>name}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			</VBox>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press=".onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press=".toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+		<semantic:titleCustomIconActions>
+			<Button id="idPrevious" text="Previous" icon="sap-icon://close-command-field" tooltip="Previous" press="onPressPrevious"/>
+			<Button id="idNext" text="Next" icon="sap-icon://open-command-field" tooltip="Next" press="onPressNext"/>
+		</semantic:titleCustomIconActions>
+	</semantic:SemanticPage>
+</mvc:View>

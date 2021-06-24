@@ -1,0 +1,18 @@
+{
+	"empProject": [{
+		"id": "1",
+		"empId": "1",
+		"projectId": "2",
+		"activeFlag": true
+	}, {
+		"id": "2",
+		"empId": "1",
+		"projectId": "1",
+		"activeFlag": true
+	}, {
+		"id": "3",
+		"empId": "2",
+		"projectId": "3",
+		"activeFlag": true
+	}]
+}

@@ -1,0 +1,23 @@
+{
+	"stakehold": [{
+			"id": "1",
+			"stakeholdId": "st1",
+			"name": "Stakeholder 1",
+			"projectId": "1"
+		},
+
+		{
+			"id": "2",
+			"stakeholdId": "st2",
+			"name": "Stakeholder 2",
+			"projectId": "2"
+		},
+
+		{
+			"id": "3",
+			"stakeholdId": "st2",
+			"name": "Stakeholder 2",
+			"projectId": "3"
+		}
+	]
+}
